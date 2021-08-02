@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                background-color: rgb(6, 178, 247);
+            }
+            .maindiv{
+                
+                text-align: center;
+                font-size: 30px;
+               
+             }
+             button{
+               background-color: rgb(87, 177, 75); 
+               color: black;
+               font-size: 50px;    
+            }
+            #result{
+                color: red;
+                font-size: 100px;
+
+            }
+       
+        </style>
+
+       
+    </head>
+    <body>
+        <br><br>
+        
+        <div class="maindiv">
+              <div>
+                
+                <span>watch price</span>  
+                <div class="contener" data-target="50" ></div> 
+                  
+              </div>
+              <div>
+                <span>phone price</span>
+                <div class="contener" data-target="100" ></div>
+            </div>
+            <div>
+                <span>Laptop price</span>
+                <div class="contener" data-target="500" ></div>
+                
+            </div>
+
+
+            <label>Watch: <label>
+                <input type="text" id="w" > <br>
+            
+                <label>phone: <label>
+                    <input type="text" id="p" > <br>
+                 <label>Laptop: <label>
+                        <input type="text" id="l" > <br><br><br>
+
+            <label>Total</label>
+            <p id="result"></p><br>
+
+            <button type="button" onclick="getInputValue();">Get Value</button>
+            
+          
+        </div>
+
+         <script>
+            
+
+             var conteners = document.querySelectorAll(".contener");
+             
+             conteners.forEach( (counter)=> {
+                // console.log(counter);
+                 counter.innerHTML = 0;
+
+               const Updatecounter=()=>{
+                const tergetcounter = +counter.getAttribute('data-target');
+                     //console.log(tergetcounter);
+                     const startingCount = Number(counter.innerHTML);
+                     const incr =  tergetcounter / 100;
+
+                     if(startingCount < tergetcounter){
+                         counter.innerHTML = `${startingCount+incr}`;
+                         setTimeout(Updatecounter, 10);
+                     }
+                     else{
+                        counter.innerHTML = `${tergetcounter}`;
+                     }
+
+              }
+                  
+              Updatecounter();               
+             })
+
+            
+            
+            
+            
+             var result = document.getElementById('result');
+    
+            function getInputValue(){
+              var num1 =  document.getElementById("w").value ;
+              var num2 =  document.getElementById("p").value ;
+              var num3 =  document.getElementById("l").value ;
+
+              //   alert(identifire);
+                var w = parseFloat(num1);
+                var p = parseFloat(num2);
+                var l = parseFloat(num3);
+              
+               
+                 result.innerHTML = (50*w +100*p + 500*l);
+            
+            
+
+
+            }
+
+
+              
+
+         </script>
+        </body>
+</html>
